@@ -81,6 +81,8 @@ target 'newProject' do
 
   pod 'react-native-track-player', :path => '../node_modules/react-native-track-player'
 
+  pod 'RNSoundPlayer', :path => '../node_modules/react-native-sound-player'
+
   target 'newProjectTests' do
     inherit! :complete
     # Pods for testing

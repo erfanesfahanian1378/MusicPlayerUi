@@ -6,6 +6,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../Screens/Home';
 import Discover from '../Screens/Discover';
 import Profile from '../Screens/Profile';
+import PlayerStyle from '../Screens/PlayerStyle'
 
 const Tab = createBottomTabNavigator();
 
@@ -62,6 +63,7 @@ function Tabs() {
           ),
         }}
       />
+      
     </Tab.Navigator>
   );
 }

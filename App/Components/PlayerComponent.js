@@ -13,6 +13,8 @@ import {Surface} from 'react-native-paper';
 import {Slider} from 'react-native-elements';
 import SongsCOmponent from './SongsComponent';
 import { responsiveFontSize, responsiveHeight } from 'react-native-responsive-dimensions';
+import SoundPlayer from 'react-native-sound-player'
+
 
 const {width, height} = Dimensions.get('screen');
 
@@ -22,13 +24,49 @@ class PlayerComponent extends Component {
     this.state = {
       value: 0.0,
       maxValue: 0.0,
+      iconName : "play"
     };
   }
+
 
   componentDidMount() {
     this.setState({
       maxValue: this.props.item.duration / 60,
     });
+  }
+
+
+   playSong() {
+    try {
+      SoundPlayer.playUrl("https://cdn.avaa.cloud/files/musics/99/04/20/Omid%20Sadeghi%20-%20Mage%20Mishe.mp3")
+    } catch (e) {
+      alert('Cannot play the file')
+      console.log('cannot play the song file', e)
+    }
+  }
+
+  // async getInfo() { // You need the keyword `async`
+  //   try {
+  //     const info = await SoundPlayer.getInfo() // Also, you need to await this because it is async
+  //     console.log('getInfo', info) // {duration: 12.416, currentTime: 7.691}
+  //   } catch (e) {
+  //     console.log('There is no song playing', e)
+  //   }
+  // }
+
+  onPressPlayButton() {
+    this.playSong()
+    if(this.state.iconName == "play") {
+      this.setState({
+        iconName:  "pause"
+      });
+    }else {
+      console.log("its not pause")
+      this.setState({
+        iconName:  "play"
+      });
+    }
+    
   }
 
   render() {
@@ -66,7 +104,7 @@ class PlayerComponent extends Component {
           <View style={styles.actions}>
             <Icon name="shuffle-variant" size={35} color="#fff" />
             <Icon name="skip-backward" size={35} color="#fff" />
-            <Icon name="play" size={35} color="#fff" />
+            <Icon onPress = {() => this.onPressPlayButton()} name={this.state.iconName} size={35} color="#fff" />
             <Icon name="skip-forward" size={35} color="#fff" />
             <Icon name="sync" size={35} color="#fff" />
           </View>

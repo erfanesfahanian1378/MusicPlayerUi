@@ -45,7 +45,7 @@ class App extends Component {
     };
     return (
       <View style={styles.container}>
-        <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+        <StatusBar barStyle="dark-content" backgroundColor="#3d3d3d" />
         <Text style={[styles.title , {color : "#fff"}]}>آوا</Text>
         <Animatable.Image
           animation={zoomIn}
